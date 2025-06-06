@@ -1,19 +1,43 @@
-const express = require("express");
+import express from "express";
+import { getAllUsers, getUser } from "../db/databasev1.js";
 const router = express.Router();
-import mysql from "mysql2/promise";
-
-// import model
-const userModel = require("../model/User");
-
-// router.get("/", (req,res)=>{
-
-// });
 
 router.use(express.json());
 
-router.post("/", async (req, res) => {
-  const newItem = await userModel.create(req.body);
-  res.status(201).send(newItem);
+// bundle getall and get single together
+
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await getAllUsers();
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
 });
 
-module.exports = router;
+router.get("/:id", async (req, res) => {
+  try {
+    const oneUser = await getUser(req.params.id);
+
+    //check if that User exists
+
+    if (!oneUser) {
+      return res.status(404).json({ msg: "User not found!" });
+    }
+
+    res.status(200).json(oneUser);
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const info = req.body;
+    res.end();
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
+});
+
+export default router;

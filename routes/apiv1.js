@@ -1,12 +1,12 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 router.use(express.json());
 
-const userMW = require("./user");
+import userMW from "./user.js";
 router.use("/user", userMW);
 
-const itemMW = require("./item");
+import itemMW from "./item.js";
 router.use("/item", itemMW);
 
-module.exports = router;
+export default router;

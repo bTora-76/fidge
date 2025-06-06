@@ -1,0 +1,16 @@
+What is sql pool?
+
+sql pool is a collection of query slots
+
+for complex queries and connection checking
+use: 
+
+1. connection = await pool.getConnection() -- borrow a connection from collection
+2. connection.query()
+3. connection.release() -- return the borrowed connection slot back to the collection so that other funcs can use them
+
+* if connection checking, just do query select 1 to see if it works
+
+for simple and fast queries
+use:
+1. pool.query() = connect, query, release

@@ -17,20 +17,22 @@ const pool = mysql.createPool({
 });
 
 // await pool.query(
-//   "INSERT INTO Users(first_name,last_name,email,user_password) VALUES('Poom', 'Poom', 'poomibi@gmail.com', '1234');"
+//   "INSERT INTO Users(first_name,last_name,email,User_password) VALUES('Poom', 'Poom', 'poomibi@gmail.com', '1234');"
 // );
 
-const getAllItems = async () => {
+const getAllUsers = async () => {
   const result = await pool.query("SELECT * FROM Users");
-  console.log(result[0]);
+  return result[0];
 };
 
-const getItem = async (id) => {
+const getUser = async (id) => {
   const result = await pool.query(
-    `SELECT * FROM Users WHERE Users.user_id = ${id}`
+    `SELECT * FROM Users WHERE Users.user_id = ?`,
+    [id]
   );
-  console.log(result[0]);
+  return result[0][0];
 };
 
-// getAllItems();
-getItem("1 OR 1=1");
+export { getAllUsers, getUser };
+
+export default pool;

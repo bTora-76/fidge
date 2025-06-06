@@ -1,11 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
+router.use(express.json());
 
-const itemModel = require("../model/Item");
+router.post("/", async (req, res) => {});
 
-router.post("/", async (req, res) => {
-  const newItem = await itemModel.create(req.body);
-  res.json(newItem);
-});
-
-module.exports = router;
+export default router;
