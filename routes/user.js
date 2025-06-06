@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+import mysql from "mysql2/promise";
 
 // import model
-const userModel = require("../model/User")
+const userModel = require("../model/User");
 
 // router.get("/", (req,res)=>{
 
@@ -10,9 +11,9 @@ const userModel = require("../model/User")
 
 router.use(express.json());
 
-router.post("/", async (req,res)=>{
-    const user = await userModel.create(req.body);
-    res.status(201).send(user)
+router.post("/", async (req, res) => {
+  const newItem = await userModel.create(req.body);
+  res.status(201).send(newItem);
 });
 
-export default router;
+module.exports = router;

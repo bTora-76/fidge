@@ -1,7 +1,12 @@
-const express = require("express")
+const express = require("express");
 const router = express.Router();
 
-const userMW = require("./user")
+router.use(express.json());
 
+const userMW = require("./user");
+router.use("/user", userMW);
 
-router.get("/user", userMW);
+const itemMW = require("./item");
+router.use("/item", itemMW);
+
+module.exports = router;
