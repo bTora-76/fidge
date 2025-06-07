@@ -11,6 +11,9 @@ app.use("/apiv1", apiv1MW);
 import errMW from "./middleware/errorMW.js";
 app.use(errMW);
 
+import notFoundMW from "./middleware/notfoundMW.js";
+app.use(notFoundMW);
+
 //not found mw
 // const notFoundMW = require("./middleware/notfoundMW.js");
 // app.use(notFoundMW);

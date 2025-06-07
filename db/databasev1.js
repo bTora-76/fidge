@@ -27,12 +27,21 @@ const getAllUsers = async () => {
 
 const getUser = async (id) => {
   const result = await pool.query(
-    `SELECT * FROM Users WHERE Users.user_id = ?`,
+    "SELECT * FROM Users WHERE Users.user_id = ?",
     [id]
   );
   return result[0][0];
 };
+//first_name, last_name, email, user_password
+const addUser = async (info) => {
+  const { first_name, last_name, email, user_password } = info;
+  const [metaData] = await pool.query(
+    "INSERT INTO Users (first_name,last_name,email,user_password) VALUES(?,?,?,?)",
+    [first_name, last_name, email, user_password]
+  );
+  return getUser(metaData.insertId);
+};
 
-export { getAllUsers, getUser };
+export { getAllUsers, getUser, addUser };
 
 export default pool;

@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllUsers, getUser } from "../db/databasev1.js";
+import { getAllUsers, getUser, addUser } from "../db/databasev1.js";
 const router = express.Router();
 
 router.use(express.json());
@@ -34,6 +34,9 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const info = req.body;
+    const result = await addUser(info);
+    console.log(result);
+
     res.end();
   } catch (err) {
     res.status(500).json({ msg: err });
