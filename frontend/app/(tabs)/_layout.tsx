@@ -14,12 +14,8 @@ const _layout = () => {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ focused }) => {
-            return (
-              <>
-                <Image source={HomeLogo} className="size-1"></Image>
-              </>
-            );
+          tabBarIcon: ({focused, color, size}) => {
+            return <Image source = {HomeLogo}></Image>
           },
         }}
       />
