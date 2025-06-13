@@ -1,38 +1,14 @@
-import { Tabs } from "expo-router";
-import React from "react";
+import { Tabs } from 'expo-router'
+import React from 'react'
 
-import { HomeLogo } from "@/assets";
-import { Image } from "react-native";
-
-// images
-
-const _layout = () => {
+const TabsLayout = () => {
   return (
     <Tabs>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({focused, color, size}) => {
-            return <Image source = {HomeLogo}></Image>
-          },
-        }}
-      />
-      <Tabs.Screen
-        name="collection"
-        options={{ title: "Fidges", headerShown: false }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{ title: "Profile", headerShown: false }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{ title: "Settings", headerShown: false }}
-      />
-    </Tabs>
-  );
-};
+        <Tabs.Screen name = "(home)" options={{headerShown : false}}/>
+        <Tabs.Screen name = "setting" options={{headerShown : false}}/>
 
-export default _layout;
+    </Tabs>
+  )
+}
+
+export default TabsLayout

@@ -1,12 +1,19 @@
-import { Stack } from "expo-router";
-import "./global.css";
+import { Stack } from 'expo-router'
+import React from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import "./global.css"
 
-export default function RootLayout() {
+const RootLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="items/[id]" options={{ headerShown: false }} />
-      <Stack.Screen name = "food/[id]" options={{headerShown : false}} />
-    </Stack>
-  );
+  <>
+    <SafeAreaProvider>
+      <Stack>
+        <Stack.Screen name = "(tabs)" options={{headerShown : false}}/>
+      </Stack>   
+    </SafeAreaProvider>
+  </>
+    
+  )
 }
+
+export default RootLayout
