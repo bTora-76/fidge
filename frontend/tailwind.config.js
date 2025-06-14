@@ -14,10 +14,10 @@ module.exports = {
           100: "#D6C6FF",
           200: "#A8B5DB",
         },
-        mainGreen : "#328E6E",
-        bgGrey : "#EAEAEA",
-        textGrey: "#A4A4A4"
-
+        mainGreen: "#328E6E",
+        bgGrey: "#EAEAEA",
+        bgDarkGrey: "#222831",
+        textGrey: "#A4A4A4",
       },
     },
   },

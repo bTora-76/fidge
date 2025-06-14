@@ -1,33 +1,66 @@
-import React from 'react'
-import { FlatList, ScrollView, Text, TextInput } from 'react-native'
-import { SafeAreaView } from "react-native-safe-area-context"
+import { Link } from "expo-router";
+import React from "react";
+import {
+  FlatList,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import FoodCard from '../../../components/FoodCard.tsx'
+import FoodCard from "../../../components/FoodCard.tsx";
 
 const DATA = [
-  {"name" : "item1"},
-  {"name" : "item2"},
-  {"name" : "item3"},
-]
-
+  { name: "item1", parent: "fidge A" },
+  { name: "item2", parent: "fidge A" },
+  { name: "item3", parent: "fidge A" },
+];
 
 const index = () => {
   return (
     <>
-    <SafeAreaView className="flex-1 justify-center items-center bg-mainGreen w-screen h-screen">
-      <ScrollView className="w-full h-full" contentContainerClassName="items-center">
+      <SafeAreaView
+        className="flex-1 justify-center items-center w-screen h-screen"
+        edges={["top"]}
+      >
+        <ScrollView
+          className="flex-1 w-full h-full  bg-mainGreen "
+          contentContainerClassName="items-center "
+        >
           <Text className="absolute left-8 top-5 text-2xl font-bold text-white">
-          Welcome,{'\n'}User
+            Welcome,{"\n"}User
           </Text>
-          <TextInput placeholder="Search Something..." placeholderTextColor= "#A4A4A4" className="bg-bgGrey mt-safe-offset-24 w-3/4 p-2.5 rounded-full"/>
 
-          <FlatList className="h-60 abosulute left-20" showsHorizontalScrollIndicator = {false} horizontal = {true} data={DATA} renderItem={({item})=><FoodCard name = {item.name} />}></FlatList>
+          <Link href="/setting" asChild>
+            <TouchableOpacity className="absolute right-8 top-5">
+              <Text>setting</Text>
+            </TouchableOpacity>
+          </Link>
 
-      </ScrollView>
-      
-    </SafeAreaView></>
+          <TextInput
+            placeholder="Search Something..."
+            placeholderTextColor="#A4A4A4"
+            className="bg-bgGrey mt-safe-offset-24 w-3/4 p-2.5 rounded-full mb-20"
+          />
 
-  )
-}
+          <FlatList
+            style={{
+              backgroundColor: "#AEAEAE",
+              height: 400,
+              marginLeft: 40,
+            }}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={DATA}
+            renderItem={({ item }) => (
+              <FoodCard name={item.name} parent={item.parent} />
+            )}
+          ></FlatList>
+        </ScrollView>
+      </SafeAreaView>
+    </>
+  );
+};
 
-export default index
+export default index;
