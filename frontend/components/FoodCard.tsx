@@ -2,16 +2,22 @@ import React from "react";
 import { Text, View } from "react-native";
 
 const FoodCard = ({ name, parent }) => {
+  
+  let addedMargin = (name === "item1" ? 40 : 0);
+
+
   return (
     <>
       <View
         id="invicibleContainer"
         style={{
+          flex : 1,
           marginHorizontal: 16,
           width: 240,
-          backgroundColor: "#F7374F",
-          flexDirection: "row",
-          justifyContent: "center",
+          height: 400,
+         
+          flexDirection: "column",
+          marginLeft : addedMargin,
           paddingTop: 120,
         }}
       >
@@ -22,26 +28,34 @@ const FoodCard = ({ name, parent }) => {
             borderRadius: 100,
             backgroundColor: "#EAEAEA",
             top: 50,
-            width: 150,
-            height: 150,
+            width: 190,
+            height: 190,
             elevation: 10,
             zIndex: 1,
+            alignSelf : "center"
           }}
         ></View>
         <View
-          style={{ width: 240, height: "100%" }}
-          className="bg-bgGrey flex-1 items-center justify-center"
+        style = {{height : "100%", borderRadius : 15}}
+        id = "box"
+          className="w-60 bg-bgGrey flex flex-col justify-center "
         >
           <Text
             style={{
-              backgroundColor: "yellow",
+              
               fontSize: 22,
-              marginBottom: 20,
+              marginTop : 85,
+              textAlign : "center",
+              marginBottom : 30,
+              fontWeight : 700
+              
+  
+        
             }}
           >
             {name}
           </Text>
-          <Text style={{ backgroundColor: "green", fontSize: 17 }}>
+          <Text style={{ fontSize: 17, textAlign:"center" , color : "#1C654B", fontWeight : 500}}>
             {parent}
           </Text>
         </View>
