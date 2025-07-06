@@ -6,6 +6,8 @@ const TabsLayout = () => {
     <Tabs>
       <Tabs.Screen name="(home)" options={{ headerShown: false }} />
       <Tabs.Screen name="profile" options={{ headerShown: false }} />
+      <Tabs.Screen name="register" options={{headerShown : false}}/>
+      
     </Tabs>
   );
 };

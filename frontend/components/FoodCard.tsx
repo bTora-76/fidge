@@ -1,14 +1,26 @@
+import { Link } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
-const FoodCard = ({ name, parent }) => {
+type propTypes = {
+  name : string,
+  parent : string,
+  id : number
+}
+
+
+const FoodCard = ({name, parent, id} : propTypes) => {
   
   let addedMargin = (name === "item1" ? 40 : 0);
+  
+  
 
 
   return (
     <>
-      <View
+    
+    <Link href={{pathname : "/collection/[id]", params : {id : id}}} asChild>
+      <TouchableOpacity
         id="invicibleContainer"
         style={{
           flex : 1,
@@ -20,6 +32,7 @@ const FoodCard = ({ name, parent }) => {
           marginLeft : addedMargin,
           paddingTop: 120,
         }}
+        activeOpacity={0.8}
       >
         <View
           id="cirlce"
@@ -59,7 +72,8 @@ const FoodCard = ({ name, parent }) => {
             {parent}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
+    </Link>
     </>
   );
 };

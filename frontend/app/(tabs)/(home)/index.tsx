@@ -10,26 +10,37 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import FoodCard from "../../../components/FoodCard.tsx";
+import FidgeButton from "@/components/FidgeButton";
+import FoodCard from "@/components/FoodCard";
+
 
 const DATA = [
-  { name: "item1", parent: "fidge A" },
-  { name: "item2", parent: "fidge A" },
-  { name: "item3", parent: "fidge A" },
-  { name: "item3", parent: "fidge A" },
-  { name: "item3", parent: "fidge A" },
-  { name: "item3", parent: "fidge A" }
+  {id: 1, name: "item1", parent: "fidge A" },
+  {id: 2, name: "item2", parent: "fidge A" },
+  {id:3, name: "item3", parent: "fidge A" },
+  { id:4,name: "item3", parent: "fidge A" },
+  { id:5,name: "item3", parent: "fidge A" },
+  { id:6,name: "item3", parent: "fidge A" }
 ];
+
+const Fidges = [
+  {id: 1, name: "SuperFideg",},
+  {id: 2, name: "Home fidge" },
+  {id:3, name: "Fidge3"},
+  { id:4,name: "Fidge4"},
+  { id:5,name: "Fidge5" },
+  { id:6,name: "Fidge6" }
+]
 
 const index = () => {
   return (
     <>
       <SafeAreaView
-        className="flex-1 justify-center items-center w-screen h-screen"
+        className="flex-1 justify-center items-center w-screen h-screen bg-mainGreen"
         edges={["top"]}
       >
         <ScrollView
-          className="flex-1 w-full h-100  bg-mainGreen "
+          className="flex-1 w-full h-100"
           contentContainerClassName="items-center "
         >
           <Text className="absolute left-8 top-5 text-2xl font-bold text-white">
@@ -56,11 +67,19 @@ const index = () => {
             showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={DATA}
-            renderItem={({ item }) => (
-              <FoodCard name={item.name} parent={item.parent} />
+            renderItem={({ item,index }) => (
+              <FoodCard name={item.name} parent={item.parent} id = {item.id} />
             )}
           ></FlatList>
-          <View className="w-40 h-80s bg-white"></View>
+          
+
+            <View id="container-for-my-fidges" className="mt-40 w-screen items-center ">
+              <Text className="mb-14 text-2xl font-bold text-white">My Fidges</Text>
+              <FidgeButton id = "1"></FidgeButton>
+              <FidgeButton id = "2"></FidgeButton>
+
+            </View>
+
         </ScrollView>
             
 
