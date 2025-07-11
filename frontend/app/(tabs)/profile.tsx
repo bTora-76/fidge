@@ -8,7 +8,7 @@ const Profile = () => {
       className="relative flex-1 w-screen h-screen justify-center "
       edges={["top"]}
     >
-      <View className="h-full w-full  bg-bgDarkGrey">
+      <View className="flex-1 justify-center items-center w-screen h-screen bg-mainGreen">
         <Text className="text-white">Profile</Text>
       </View>
     </SafeAreaView>
